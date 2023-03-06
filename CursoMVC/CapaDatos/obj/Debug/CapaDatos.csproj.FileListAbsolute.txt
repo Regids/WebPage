@@ -1,0 +1,9 @@
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaDatos\bin\Debug\CapaDatos.dll
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaDatos\bin\Debug\CapaDatos.pdb
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaDatos\bin\Debug\CapaEntidad.dll
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaDatos\bin\Debug\CapaEntidad.pdb
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaDatos\obj\Debug\CapaDatos.csproj.AssemblyReference.cache
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaDatos\obj\Debug\CapaDatos.csproj.CoreCompileInputs.cache
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaDatos\obj\Debug\CapaDatos.dll
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaDatos\obj\Debug\CapaDatos.pdb
