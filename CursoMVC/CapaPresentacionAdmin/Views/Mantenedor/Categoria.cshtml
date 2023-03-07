@@ -48,22 +48,27 @@
             <div class="modal-body">
 
                 <input id="txtid" type="hidden" value="0" />
-
-                <div class="row g-1">
-
-                    <div class="col-sm-6">
-                        <label for="txtCorreo" class="form-label">Descripcion</label>
-                        <input type="email" class="form-control" id="txtDescripcion" autocomplete="off">
+                <form id="formNivel">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="txtdescripcion">Descripcion</label>
+                                <input type="text" class="form-control required" id="txtdescripcion" name="descripcion" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="cboEstado">Estado</label>
+                                    <select id="cboEstado" class="form-select">
+                                        <option value="1">Activo</option>
+                                        <option value="0">No Activo</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="col-sm-6">
-                        <label for="cboactivo" class="form-label">Activo</label>
-                        <select id="cboactivo" class="form-select form-select-lg mb-3">
-                            <option value="1">Si</option>
-                            <option value="2">No</option>
-                        </select>
-                    </div>
-                </div>
+                </form>
 
                 <div class="row mt-2">
                     <div class="col-12">

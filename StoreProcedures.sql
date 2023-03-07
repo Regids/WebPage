@@ -292,3 +292,42 @@ AS BEGIN
 	SET  @Resultado = 0
 	IF NOT EXISTS (SELECT * FROM PRODUCTO WHERE Nombre = @Nombre AND IdProducto != @IdProducto)
 	BEGIN
+		UPDATE PRODUCTO 
+		SET
+			Nombre = @Nombre,
+			Descripcion =@Descripcion,
+			IdMarca = @IdMarca,
+			IdCategoria = @IdCategoria,
+			Precio = @Precio,
+			Stock = @Stock,
+			Activo = @Activo
+		where IdProducto = @IdProducto
+		SET  @Resultado = 1
+	END
+	ELSE
+		SET @Mensaje = 'El producto ya existe'
+	END
+GO
+
+IF EXISTS (SELECT SPECIFIC_NAME FROM INFORMATION_SCHEMA.ROUTINES WHERE SPECIFIC_NAME = N'SP_ProductDelete')
+	DROP PROCEDURE SP_ProductDelete
+GO
+
+CREATE PROCEDURE SP_ProductDelete(
+	 @IdProducto INT,
+	 @Mensaje VARCHAR(500) output,
+	 @Resultado INT OUTPUT
+)
+AS BEGIN
+	SET @Resultado = 0
+	IF NOT EXISTS (SELECT * FROM DETALLE_VENTA dv
+		INNER JOIN Producto p on p.IdProducto = dv.IdProducto
+		WHERE p.IdProducto = @IdProducto)
+		BEGIN
+			DELETE TOP(1) FROM Producto where IdProducto = @IdProducto
+			SET @Resultado = 1
+		END
+	ELSE
+		SET @Mensaje = 'El producto ya existe'
+	END
+GO
