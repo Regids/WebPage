@@ -20,7 +20,7 @@ namespace CapaNegocio
         public int Register(Producto obj, out string Mensaje)
         {
 
-            string msj = string.IsNullOrEmpty(obj.Nombre) || string.IsNullOrEmpty(obj.Descripcion) ? msj = "La descripción no puede ser nula o vacía." : string.Empty;
+            string msj = string.IsNullOrEmpty(obj.Nombre) || string.IsNullOrEmpty(obj.Descripcion) ? "La descripción no puede ser nula o vacía." : string.Empty;
 
             if (obj.oMarca.IdMarca == 0)
                 msj = "Seleccione una marca";

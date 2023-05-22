@@ -1,0 +1,6 @@
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaEntidad\bin\Release\CapaEntidad.dll
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaEntidad\bin\Release\CapaEntidad.pdb
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaEntidad\obj\Release\CapaEntidad.csproj.AssemblyReference.cache
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaEntidad\obj\Release\CapaEntidad.csproj.CoreCompileInputs.cache
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaEntidad\obj\Release\CapaEntidad.dll
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaEntidad\obj\Release\CapaEntidad.pdb

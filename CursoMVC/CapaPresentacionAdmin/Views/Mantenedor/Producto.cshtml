@@ -115,7 +115,7 @@
                 <div class="row mt-2">
                     <div class="col-12">
                         <div id="ErrorMessage" class="alert alert-warning" role="alert">
-                            This is a warning alert—check it out!
+                           
                         </div>
                     </div>
                 </div>
@@ -151,15 +151,28 @@
             responsive: true,
             ordering: false,
             "ajax": {
-                url:'@Url.Action("ListarMarcas", "Mantenedor")',
+                url:'@Url.Action("ListarProductos", "Mantenedor")',
                 type: 'GET',
                 dataType: 'json'
             },
             "columns": [
 
+                { "data": "Nombre" },
                 { "data": "Descripcion" },
                 {
-                    "data": "Activo", "render": function(valor) {
+                    "data": "oMarca", "render": function (data) {
+                        return data.Descripcion
+                    }
+                },
+                {
+                    "data": "Ocategoria", "render": function (data) {
+                        return data.Descripcion
+                    }
+                },
+                { "data": "Precio" },
+                { "data": "Stock" },
+                {
+                    "data": "Activo", "render": function (valor) {
                         if (valor) {
                             return '<span class="badge bg-success">Si</span>'
                         } else {
@@ -220,6 +233,42 @@
             }
         });
 
+
+        jQuery.validator.addMethod("preciodecimal", function (value, element) {
+            return this.optional(element) || /^\d{0,4}(\.\d{0,2})?$/i.test(value);
+        }, "El formato es incorrecto.");
+
+        $("#contenedor").validate({
+            rules: {
+                nombre: {
+                    required: true
+                },
+                descripcion: {
+                    required: true
+                },
+                precio: {
+                    required: true,
+                    preciodecimal: true
+                },
+                stock: {
+                    required: true,
+                    number: true
+                }
+            },
+            messages: {
+                nombre: "*Debe ingresar un nombre.",
+                descripcion: "*Debe ingresar una descripcion.",
+                precio: {
+                    required: "*El precio es obligatorio.", preciodecimal: "Indique el precio en formato decimal. ##.##"
+                },
+                stock: {
+                    required: "*Debe ingresar una cantidad.", preciodecimal: "Indique el precio en formato decimal. ##.##"
+                }
+            },
+            errorElement: "div",
+            errorLabelContainer: ".alert-warning"
+        })
+
         function abrirModal(json) {
 
                 $("#txtid").val(0);
@@ -233,21 +282,49 @@
                 $("#txtstock").val("");
                 $("#cboactivo").val(1);
 
-                $("#ErrorMessage").hide();
+            $("#ErrorMessage").hide();
 
                 if (json != null) {
 
                     $("#txtid").val(json.IdProducto);
                     $("#txtnombre").val(json.Nombre);
+                    $("#txtDescripcion").val(json.Descripcion);
                     $("#cbomarca").val(json.oMarca.IdMarca);
-                    $("#cbocategoria").val(json.oCategoria.IdCategoria);
+                    $("#cbocategoria").val(json.Ocategoria.IdCategoria);
                     $("#txtprecio").val(json.Precio);
                     $("#txtstock").val(json.Stock);
                     $("#cboactivo").val(json.Activo == true ? 1 : 2); //este es el if
-                }
+
+                    
+            jQuery.ajax({
+                url: '@Url.Action("ImagenProducto", "Mantenedor")',
+                type: "POST",
+                    data: JSON.stringify({
+                        id: json.IdProducto
+                    }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+                    $("#img_producto").LoadingOverlay("hide")
+
+                    if (data.conversion) {
+                        $("#img_producto").attr({ "src": "data:image/" + data.extension + ";base64," + data.textoBase64 });
+                    }
+                },
+                error: function (error) {
+                    $("#img_producto").LoadingOverlay("hide")
+                    $("#ErrorMessage").text("Error al mostrar la imagen.");
+                },
+                beforeSend: function () {
+                    $("#img_producto").LoadingOverlay("show")
+                },
+            });
+
+        }
 
                 $("#FormModal").modal("show");
-        }
+    }
 
         $("#tabla tbody").on("click", '.btn-editar', function () {
 
@@ -260,33 +337,33 @@
 
         $("#tabla tbody").on("click", '.btn-eliminar', function () {
 
-            var marcaseleccionada = $(this).closest("tr"); //obtiene la fila seleccionada para hacer los cambios.
+            var productoSeleccionado = $(this).closest("tr"); //obtiene la fila seleccionada para hacer los cambios.
 
-            var data = tabladata.row(marcaseleccionada).data(); //obtiene los datos.
-
+            var data = tabladata.row(productoSeleccionado).data(); //obtiene los datos.
 
 
             Swal.fire({ //se usa sweetalert2
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                title: 'Esta seguro?',
+                text: "Desea eliminar el producto?",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: 'Si',
+                closeOnConfirm: true
             }).then((result) => {
-
+                debugger
                 if (result.isConfirmed) {
+
                     jQuery.ajax({
-                    url: '@Url.Action("EliminarMarca", "Mantenedor")',
+                    url: '@Url.Action("EliminarProducto", "Mantenedor")',
                         type: "POST",
-                        data: JSON.stringify({ id: data.IdMarca }),
+                        data: JSON.stringify({ id: data.IdProducto }),
                     dataType: "json",
                     contentType: "application/json: charset=uft-8",
                     success: function (data) {
-
                 if (data.result) {
-                    tabladata.row(marcaseleccionada).remove().draw();
+                    tabladata.row(productoSeleccionado).remove().draw();
                 } else {
                     Swal.fire('No se pudo eliminar')
                 }
@@ -301,6 +378,9 @@
 
         function Guardar() {
 
+            if (!$("#contenedor").valid()) {
+                return
+            }
             var imagenSeleccionada = $("#fileProducto")[0].files[0];
 
             var Producto = {
@@ -321,7 +401,7 @@
                 Stock: $("#txtstock").val(),
                 Activo: $("#cboactivo").val() == 1 ? true : false,
             }
-            
+
             var request = new FormData();
             request.append("objeto", JSON.stringify(Producto))
             request.append("archivoImagen", imagenSeleccionada)
@@ -335,7 +415,7 @@
                 success: function (data) {
 
                     $(".modal-body").LoadingOverlay("hide");
-                    
+
                     //NUEVO PRODUCTO
                     if (Producto.IdProducto == 0) {
 

@@ -51,6 +51,8 @@ C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\ros
 C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\roslyn\VBCSCompiler.exe
 C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\Antlr3.Runtime.dll
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\CapaEntidad.dll
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\CapaNegocio.dll
 C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\Newtonsoft.Json.dll
@@ -62,6 +64,9 @@ C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\Sys
 C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\System.Web.WebPages.dll
 C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\System.Web.WebPages.Razor.dll
 C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\WebGrease.dll
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\CapaDatos.dll
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\CapaEntidad.pdb
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\CapaNegocio.pdb
 C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\System.Web.Helpers.xml
 C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\System.Web.Mvc.xml
 C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\System.Web.Optimization.xml
@@ -72,6 +77,7 @@ C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\Sys
 C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\Newtonsoft.Json.xml
 C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\Antlr3.Runtime.pdb
 C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\CapaDatos.pdb
 C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\es\System.Web.Helpers.resources.dll
 C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\es\System.Web.Mvc.resources.dll
 C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\es\System.Web.Optimization.resources.dll
@@ -84,9 +90,3 @@ C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\obj\Deb
 C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\obj\Debug\CapaPresentacionAdmin.csproj.CopyComplete
 C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\obj\Debug\CapaPresentacionAdmin.dll
 C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\obj\Debug\CapaPresentacionAdmin.pdb
-C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\CapaEntidad.dll
-C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\CapaNegocio.dll
-C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\CapaDatos.dll
-C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\CapaEntidad.pdb
-C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\CapaNegocio.pdb
-C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaPresentacionAdmin\bin\CapaDatos.pdb

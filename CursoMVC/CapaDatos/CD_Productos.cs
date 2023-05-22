@@ -170,6 +170,7 @@ namespace CapaDatos
             try
             {
                 string query = "Update Producto SET RutaImagen = @rutaImagen, NombreImagen = @NombreImagen where IdProducto = @IdProducto";
+
                 using (SqlConnection SqlConnection = new SqlConnection(Conexion.cn))
                 {
                     SqlCommand cmd = new SqlCommand(query, SqlConnection);
@@ -180,7 +181,7 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.AddWithValue("Mensaje", SqlDbType.VarChar).Direction = ParameterDirection.Output;
 
-                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandType = CommandType.Text;
 
                     SqlConnection.Open();
 

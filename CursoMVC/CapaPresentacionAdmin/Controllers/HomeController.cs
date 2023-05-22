@@ -36,9 +36,8 @@ namespace CapaPresentacionAdmin.Controllers
         public JsonResult GuardarUsuario(Usuario objUser)
         {
             object result;
-            string mensaje = string.Empty;
-
-            if(objUser.IdUsuario == 0)
+            string mensaje;
+            if (objUser.IdUsuario == 0)
             {
                 result = new CN_Usuarios().Register(objUser, out mensaje);
             }
@@ -62,6 +61,27 @@ namespace CapaPresentacionAdmin.Controllers
             { 
                result = respuesta, mensaje = mensaje
             },JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult VistaDashboard()
+        {
+            DashBoard objeto = new CN_Reporte().VerDashboard();
+
+            return Json(new
+            {
+                resultado = objeto,
+            }, JsonRequestBehavior.AllowGet );
+        }
+
+        [HttpGet]
+        public JsonResult ListaReporte(string fechainicio, string fechafin, string idtransaccion)
+        {
+            List<Reporte> olista = new List<Reporte>();
+
+            olista = new CN_Reporte().VerReporte(fechainicio, fechafin, idtransaccion);
+
+            return Json(new { data = olista }, JsonRequestBehavior.AllowGet);
         }
     }
 }

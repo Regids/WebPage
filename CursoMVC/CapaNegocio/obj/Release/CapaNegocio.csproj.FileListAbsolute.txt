@@ -1,0 +1,11 @@
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaNegocio\bin\Release\CapaNegocio.dll
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaNegocio\bin\Release\CapaNegocio.pdb
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaNegocio\bin\Release\CapaDatos.dll
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaNegocio\bin\Release\CapaEntidad.dll
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaNegocio\bin\Release\CapaDatos.pdb
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaNegocio\bin\Release\CapaEntidad.pdb
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaNegocio\obj\Release\CapaNegocio.csproj.AssemblyReference.cache
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaNegocio\obj\Release\CapaNegocio.csproj.CoreCompileInputs.cache
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaNegocio\obj\Release\CapaNegocio.csproj.CopyComplete
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaNegocio\obj\Release\CapaNegocio.dll
+C:\Users\Josue\Documents\Sistema Web .NET\CursoMVC\CapaNegocio\obj\Release\CapaNegocio.pdb
