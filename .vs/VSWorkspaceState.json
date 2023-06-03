@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\CursoMVC",
+    "\\CursoMVC\\CapaNegocio",
+    "\\CursoMVC\\CapaPresentacionAdmin",
+    "\\CursoMVC\\CapaPresentacionAdmin\\Controllers",
+    "\\CursoMVC\\CapaPresentacionAdmin\\Views\\Home"
+  ],
+  "SelectedNode": "\\CursoMVC\\CapaNegocio\\CN_Usuarios.cs",
+  "PreviewInSolutionExplorer": false
+}
