@@ -65,6 +65,49 @@ namespace CapaDatos
             return lista;
         }
 
+        public Usuario obtenerUsuario(string Correo, string Clave)
+        {
+
+            Usuario User = new Usuario();
+
+            using (SqlConnection oconexion = new SqlConnection(Conexion.cn))
+            {
+                try
+                {
+                    string query = string.Format("SELECT IdUsuario, Nombres, Apellidos, Correo, Clave, Reestablecer, Activo FROM USUARIO WHERE Correo = '{0}' and Clave = '{1}'", Correo,Clave);
+
+                    SqlCommand cmd = new SqlCommand(query, oconexion)
+                    {
+                        CommandType = CommandType.Text
+                    };
+
+                    oconexion.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            User.IdUsuario = Convert.ToInt32(dr["IdUsuario"]);
+                            User.Nombres = dr["Nombres"].ToString();
+                            User.Apellidos = dr["Apellidos"].ToString();
+                            User.Correo = dr["Correo"].ToString();
+                            User.Clave = dr["Clave"].ToString();
+                            User.Reestablecer = Convert.ToBoolean(dr["Reestablecer"]);
+                            User.Activo = Convert.ToBoolean(dr["Activo"]);
+                        };
+                    }
+                    oconexion.Close();
+                }
+                catch (Exception ex)
+                {
+                    oconexion.Close();
+                    User = new Usuario();
+                }
+            }
+
+            return User;
+        }
+
         public int Registrar(Usuario obj, out string Mensaje)
         {
             int iDAutoGenerado = 0;
@@ -166,5 +209,61 @@ namespace CapaDatos
             }
             return result;
         }
+
+        public bool CambiarClave(int idUsuario, string nuevaclave, out string Mensaje)
+        {
+            bool result = false;
+            Mensaje = string.Empty;
+
+            try
+            {
+                using (SqlConnection connect = new SqlConnection(Conexion.cn))
+                {
+                    SqlCommand cmd = new SqlCommand("UPDATE USUARIO SET CLAVE = @nuevaclave, reestablecer = 0 WHERE IdUsuario = @id", connect);
+                    cmd.Parameters.AddWithValue("@nuevaclave", nuevaclave);
+                    cmd.Parameters.AddWithValue("@id", idUsuario);
+                    cmd.CommandType = CommandType.Text;
+                    connect.Open();
+                    result = cmd.ExecuteNonQuery() > 0 ? true : false;
+
+                    connect.Close();
+                }
+
+            }catch(Exception ex)
+            {
+                result = false;
+                Mensaje = ex.Message;
+            }
+            return result;
+        }
+
+        public bool ReestablecerClave(int idUsuario, string clave, out string Mensaje)
+        {
+            bool result = false;
+            Mensaje = string.Empty;
+
+            try
+            {
+                using (SqlConnection connect = new SqlConnection(Conexion.cn))
+                {
+                    SqlCommand cmd = new SqlCommand("UPDATE USUARIO SET CLAVE = @clave, reestablecer = 1 WHERE IdUsuario = @id", connect);
+                    cmd.Parameters.AddWithValue("@nuevaclave", clave);
+                    cmd.Parameters.AddWithValue("@id", idUsuario);
+                    cmd.CommandType = CommandType.Text;
+                    connect.Open();
+                    result = cmd.ExecuteNonQuery() > 0 ? true : false;
+
+                    connect.Close();
+                }
+
+            }catch(Exception ex)
+            {
+                result = false;
+                Mensaje = ex.Message;
+            }
+            return result;
+        }
+
+
     }
 }
