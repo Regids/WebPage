@@ -63,8 +63,8 @@
 
     <div class="card-body">
 
-        <form>
-            <div class="row align-items-end">
+        <form action="@Url.Action("ExportarVenta", "Home")" method="post">
+            <div class="row align-items-lg-end">
                 <div class="col-sm-2">
                     <div class="mb-2">
                         <label class="form-label">Fecha de inicio:</label>
@@ -84,22 +84,21 @@
                         <label class="form-label">ID Transaccion:</label>
                         <input class="form-control" type="text" id="txtidtransaccion" name="idtansaccion" />
                     </div>
-                </div>
-
+                </div>           
+            </div>
+            <div class="row align-baseline">
                 <div class="col-sm-2">
-                    <div class="d-grid mb-2">
-                        <button class="btn-primary" id="btnbuscar" type="button"><i class="fas fa-search">Buscar</i></button>
+                    <div class="d-grid mb-2 mt-1">
+                        <button class="btn btn-success" type="submit"><i class="fas fa-file-excel"></i>Exportar</button>
                     </div>
                 </div>
-
                 <div class="col-sm-2">
-                    <div class="d-grid mb-2">
-                        <button class="btn-success" type="submit"><i class="fas fa-file-excel">Exportar</i></button>
+                    <div class="d-grid mb-2 mt-1">
+                        <button class="btn btn-primary" id="btnbuscar" type="submit"><i class="fas fa-search"></i>Buscar</button>
                     </div>
                 </div>
             </div>
         </form>
-
         <hr />
 
         <div class="row">
@@ -120,7 +119,7 @@
                     </tbody>
                 </table>
             </div>
-        </div> 
+        </div>
     </div>
 </div>
 
@@ -128,16 +127,20 @@
 
     <script>
 
-        $("#txtfechainicio").datepicker({ dateFormat: 'dd/mm/yy' }).datepicker('setDate', new Date())
-        $("#txtfechafin").datepicker({ dateFormat: 'dd/mm/yy' }).datepicker('setDate', new Date())
+        var tabladata;
+
+        $(document).ready(function () {
+
+             $("#txtfechainicio").datepicker({ dateFormat: 'dd/mm/yy' }).datepicker('setDate', new Date())
+             $("#txtfechafin").datepicker({ dateFormat: 'dd/mm/yy' }).datepicker('setDate', new Date())
 
              jQuery.ajax({
                 url: '@Url.Action("VistaDashboard", "Home")',
-                type: "GET",             
+                type: "GET",
                 dataType: "json",
                 contentType: "application/json: charset=utf-8",
                 success: function (data) {
-                    
+
                     var objeto = data.resultado;
 
                      $("#totalClientes").text(objeto.TotalCliente)
@@ -146,7 +149,46 @@
                 }
              });
 
-      
+        var Url = '@Url.Action("ListaReporte", "Home")' +
+            "?fechainicio = " + $("#txtfechainicio").val() +
+            "&txtfechafin = " + $("#txtfechafin").val() +
+                "&txtidtransaccion = " + $("#txtidtransaccion").val()
+
+            tabladata = $('#tabla').DataTable({
+                responsive: true,
+                ordering: false,
+                "ajax": {
+                    url: Url,
+                    type: 'GET',
+                    dataType: 'json'
+                },
+                "columns": [
+                    { "data": "FechaVenta" },
+                    { "data": "Cliente" },
+                    { "data": "Producto" },
+                    { "data": "Precio" },
+                    { "data": "Cantidad" },
+                    { "data": "Total" },
+                    { "data": "IdTransaccion" }
+                ],
+                "languaje": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json" //pasarla a espaniol la pagina
+                }
+            });
+
+        })
+
+        $("#btnbuscar").on("click", function () {
+
+            var nuevaUrl = '@Url.Action("ListaReporte", "Home")' +
+            "?fechainicio = " + $("#txtfechainicio").val() +
+            "&txtfechafin = " + $("#txtfechafin").val() +
+                "&txtidtransaccion = " + $("#txtidtransaccion").val()
+
+            tabladata.ajax.url(nuevaUrl).load();
+
+        })
+
     </script>
 
 }
